@@ -1,3 +1,3 @@
-Implementation of an FSM in Java that provides deterministic events for setup and tear down of states, something that can't be done using constructor & destructor (finalizer) as it is not pissible to determine when the Garbage Collector will run the finalizer on the state class.
+Implementation of an FSM in Java that provides deterministic events for setup and tear down of states, something that can't be done using constructor & destructor (finalizer) as it is not possible to determine when the Garbage Collector will run the finalizer on the state class.
 
 As an added bonus the IEnter.enter() method is always called after ILeave.leave() on the previous state, and the reverse is also true, i.e. ILeave.leave() is always called before IEnter.enter() on the next state. This has the benefit of two states never being 'active' at the same time, something that happens when the constructor is used for initialization.
