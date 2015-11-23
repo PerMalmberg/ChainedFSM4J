@@ -42,6 +42,7 @@ public class FSMTest {
 		fsm.event(new EventB());
 		assertTrue(fsm.getCurrentState() instanceof ReactsOnEventA);
 		fsm.event(new EventA("Some other data carried by the event"));
+		fsm.event(new EventA("Won't change state because of this event"));
 		assertTrue(fsm.getCurrentState() instanceof ReactsOnEventB);
 
 	}
