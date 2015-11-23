@@ -1,15 +1,17 @@
-import states.DerivedTestState;
-import states.TestBaseState;
-import states.TestState;
+import events.EventA;
+import events.EventB;
+import states.ReactsOnEventA;
+import states.ReactsOnEventB;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Per Malmberg on 2015-11-19.
  */
 public class FSMTest {
 
-	private chainedfsm.FSM<TestBaseState> fsm = new chainedfsm.FSM<TestBaseState>();
+	private FsmExample fsm = new FsmExample();
 
 	@org.junit.Before
 	public void setUp() throws Exception {
@@ -23,11 +25,24 @@ public class FSMTest {
 
 	@org.junit.Test
 	public void testSetState() throws Exception {
-		fsm.setState(new TestState(fsm));
+		fsm.setState(new ReactsOnEventA(fsm));
 		assertEquals(1, fsm.getCurrentState().getCount());
-		fsm.setState(new DerivedTestState(fsm));
+		fsm.setState(new ReactsOnEventB(fsm));
 		assertEquals(2, fsm.getCurrentState().getCount());
-		fsm.setState(new TestState(fsm));
+		fsm.setState(new ReactsOnEventA(fsm));
 		assertEquals(1, fsm.getCurrentState().getCount());
+	}
+
+	@org.junit.Test
+	public void testEventA() throws Exception {
+		fsm.setState(new ReactsOnEventA(fsm));
+
+		fsm.event(new EventA("Some data carried by the event"));
+		assertTrue(fsm.getCurrentState() instanceof ReactsOnEventB);
+		fsm.event(new EventB());
+		assertTrue(fsm.getCurrentState() instanceof ReactsOnEventA);
+		fsm.event(new EventA("Some other data carried by the event"));
+		assertTrue(fsm.getCurrentState() instanceof ReactsOnEventB);
+
 	}
 }
