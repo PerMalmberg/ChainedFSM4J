@@ -10,7 +10,7 @@ import events.EventB;
 /**
  * Created by Per Malmberg on 2015-11-19.
  */
-public class ReactsOnEventB extends ReactsOnEventA {
+public class ReactsOnEventB extends TestBaseState {
 
 	public ReactsOnEventB(FSM<TestBaseState> fsm) {
 		super(fsm);
@@ -33,7 +33,7 @@ public class ReactsOnEventB extends ReactsOnEventA {
 //
 //		});
 
-		new LeaveChain<ReactsOnEventA>(this, new ILeave() {
+		new LeaveChain<ReactsOnEventB>(this, new ILeave() {
 			@Override
 			public void leave() {
 				// We can access private fields of ReactsOnEventB from here
