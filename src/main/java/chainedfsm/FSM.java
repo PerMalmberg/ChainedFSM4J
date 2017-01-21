@@ -8,11 +8,16 @@ public class FSM<BaseState extends EnterLeaveState> {
 
 	public void setState(BaseState state) {
 		if (state != null) {
+			preSetState();
+
 			if (myState != null) {
 				myState.doLeave();
 			}
 
 			myState = state;
+
+			postSetState();
+
 			myState.doEnter();
 		}
 	}
@@ -21,4 +26,9 @@ public class FSM<BaseState extends EnterLeaveState> {
 		return myState;
 	}
 
+	protected void preSetState() {
+	}
+
+	protected void postSetState() {
+	}
 }
