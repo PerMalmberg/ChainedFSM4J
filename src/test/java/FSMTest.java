@@ -1,7 +1,5 @@
 import events.EventA;
 import events.EventB;
-import states.ReactsOnEventA;
-import states.ReactsOnEventB;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
