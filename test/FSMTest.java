@@ -28,7 +28,7 @@ public class FSMTest {
 		fsm.setState(new ReactsOnEventA(fsm));
 		assertEquals(1, fsm.getCurrentState().getCount());
 		fsm.setState(new ReactsOnEventB(fsm));
-		assertEquals(2, fsm.getCurrentState().getCount());
+		assertEquals(1, fsm.getCurrentState().getCount());
 		fsm.setState(new ReactsOnEventA(fsm));
 		assertEquals(1, fsm.getCurrentState().getCount());
 	}
