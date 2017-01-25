@@ -1,3 +1,5 @@
+package states;
+
 import chainedfsm.EnterLeaveState;
 import chainedfsm.FSM;
 import events.EventA;

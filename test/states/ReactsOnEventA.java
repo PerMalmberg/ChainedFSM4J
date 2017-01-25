@@ -1,3 +1,5 @@
+package states;
+
 import chainedfsm.EnterChain;
 import chainedfsm.LeaveChain;
 import chainedfsm.interfaces.IEnter;

@@ -26,9 +26,6 @@ public class FSM<BaseState extends EnterLeaveState> {
 		return myState;
 	}
 
-	protected void preSetState() {
-	}
-
-	protected void postSetState() {
-	}
+	public void preSetState() {}
+	public void postSetState() {}
 }
